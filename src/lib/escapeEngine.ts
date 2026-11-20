@@ -134,10 +134,14 @@ export function evaluateEscapeRoute(
   // Subtract 2.5h (150m) for destination immigration, baggage, and return check-in buffer
   const rawNetMins = bestIn.departKst - bestOut.arriveKst - 150
   const netLocalHours = Math.max(0, Math.round(rawNetMins / 60))
+  const roundTripFlightHours =
+    (bestOut.arriveKst - bestOut.departKst + (bestIn.arriveKst - bestIn.departKst)) / 60
+  // Require at least 18h locally AND stay duration >= 1.8x round-trip flight time
+  const minRecommendedHours = Math.max(18, Math.ceil(roundTripFlightHours * 1.8))
 
   return {
     routeId: route.routeId,
-    reachable: netLocalHours >= 18,
+    reachable: netLocalHours >= minRecommendedHours,
     netLocalHours,
     outbound: {
       flightId: bestOut.flightId,

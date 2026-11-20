@@ -45,7 +45,7 @@ export function TopPipelineHud({
       </div>
 
       <p className="text-xs text-[#9EB2CC] tabular-nums">
-        {activePreset.summary} · 다녀올 수 있는 직항 {reachableCount}/{totalCount}개 도시 (출입국·수속 제외 18시간 이상 기준)
+        {activePreset.summary} · 추천 직항 {reachableCount}/{totalCount}개 도시 (왕복 비행시간의 1.8배 이상 현지 체류 기준)
       </p>
     </header>
   )

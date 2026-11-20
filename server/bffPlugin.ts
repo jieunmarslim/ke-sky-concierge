@@ -513,7 +513,7 @@ async function fetchRouteGeminiInsight(
         generationConfig: {
           thinkingConfig: { thinkingLevel: 'LOW' },
           temperature: 0.25,
-          maxOutputTokens: 1200,
+          maxOutputTokens: 2048,
         },
       }),
       signal: AbortSignal.timeout(20000),
